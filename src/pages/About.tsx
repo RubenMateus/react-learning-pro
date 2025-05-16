@@ -1,3 +1,10 @@
+import { Nav } from "../components/Nav";
+
 export const About = () => {
-  return <div>Hello, About</div>;
+  return (
+    <div>
+      <Nav />
+      <div>Hello, About</div>
+    </div>
+  );
 };
