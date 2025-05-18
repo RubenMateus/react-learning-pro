@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 
-export default function Dashboard() {
+export const User = () => {
   const { id } = useParams();
 
   return (
@@ -8,4 +8,4 @@ export default function Dashboard() {
       <h1>USER ID: {id}</h1>
     </div>
   );
-}
+};
