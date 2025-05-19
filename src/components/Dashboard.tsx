@@ -5,7 +5,7 @@ export const Dashboard = () => {
   return (
     <div>
       <Nav />
-      <h1>Dashboard</h1>
+      {/* <h1>Dashboard</h1> */}
       <Outlet />
     </div>
   );
