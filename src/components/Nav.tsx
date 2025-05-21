@@ -13,6 +13,9 @@ export const Nav = () => {
         <li>
           <NavLink to="/users">Utilizadores</NavLink>
         </li>
+        <li>
+          <NavLink to="/todos">Tarefas</NavLink>
+        </li>
       </ul>
     </nav>
   );
