@@ -4,7 +4,7 @@ import { About } from "./pages/About";
 import "./App.css";
 import { Dashboard } from "./components/Dashboard";
 import { Users } from "./pages/Users";
-import { User } from "./pages/User";
+import { UserPage } from "./pages/User";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { CreateUser } from "./pages/CreateUser";
@@ -25,7 +25,7 @@ export const App = () => {
             <Route path="/users" element={<Dashboard />}>
               <Route index element={<Users />} />
               <Route path="create" element={<CreateUser />} />
-              <Route path=":id" element={<User />} />
+              <Route path=":id" element={<UserPage />} />
             </Route>
             <Route path="/todos" element={<Todos />} />
             <Route path="*" element={<div>Not Found</div>} />
