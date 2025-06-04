@@ -1,10 +1,6 @@
 import type { User } from "@/@types/user";
+import { fetchUsers } from "@/services/userService";
 import { useQuery } from "@tanstack/react-query";
-
-const fetchUsers = async (): Promise<User[]> => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users");
-  return res.json();
-};
 
 export const useUsers = () => {
   const { data, isLoading, error } = useQuery<User[]>({
