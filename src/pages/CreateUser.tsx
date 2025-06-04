@@ -13,7 +13,7 @@ export const CreateUser = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<User>({
     resolver: zodResolver(UserSchema),
   });
 
@@ -21,8 +21,6 @@ export const CreateUser = () => {
     createUser(data);
     navigate("/users");
   };
-
-  console.log(errors);
 
   return (
     <div>

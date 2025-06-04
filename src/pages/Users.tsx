@@ -45,7 +45,7 @@ export const Users = () => {
               </TableCell>
               <TableCell>
                 <Button
-                  onClick={() => deleteUser(user.id)}
+                  onClick={() => deleteUser(user.id!)}
                   variant="destructive"
                 >
                   Delete
