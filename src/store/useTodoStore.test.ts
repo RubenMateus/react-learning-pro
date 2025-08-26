@@ -8,6 +8,7 @@ const resetStore = () => {
 
 describe("useTodoStore", () => {
   beforeEach(() => {
+    vi.restoreAllMocks();
     resetStore();
   });
 
@@ -24,8 +25,6 @@ describe("useTodoStore", () => {
     const todos = useTodoStore.getState().todos;
     expect(todos).toHaveLength(1);
     expect(todos[0]).toEqual({ id: now, text: "Test todo", done: false });
-
-    vi.restoreAllMocks();
   });
 
   it("should not add a todo with empty text", () => {
@@ -45,8 +44,6 @@ describe("useTodoStore", () => {
 
     useTodoStore.getState().toggleTodo(now);
     expect(useTodoStore.getState().todos[0].done).toBe(false);
-
-    vi.restoreAllMocks();
   });
 
   it("should remove a todo", () => {
@@ -58,8 +55,6 @@ describe("useTodoStore", () => {
 
     useTodoStore.getState().removeTodo(now);
     expect(useTodoStore.getState().todos).toHaveLength(0);
-
-    vi.restoreAllMocks();
   });
 
   it("should not toggle or remove non-existent todo", () => {

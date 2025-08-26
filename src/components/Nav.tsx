@@ -16,6 +16,9 @@ export const Nav = () => {
         <li>
           <NavLink to="/todos">Tarefas</NavLink>
         </li>
+        <li>
+          <NavLink to="/dropdowns-malucas">Dropdowns Malucas</NavLink>
+        </li>
       </ul>
     </nav>
   );

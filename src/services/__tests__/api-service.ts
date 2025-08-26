@@ -1,5 +1,7 @@
 import { vi, describe, it, expect } from "vitest";
-import { fetchUser, fetchUsers } from "../userService";
+import { fetchUsers } from "../userService";
+import { fetchById } from "../service";
+import type { User } from "@/@types/user";
 
 describe("fetchUser", () => {
   it("Should call fetch with correct url", async () => {
@@ -17,7 +19,7 @@ describe("fetchUser", () => {
       json: () => Promise.resolve(mockUser),
     });
 
-    const result = await fetchUser("1");
+    const result = await fetchById<User>("users", "1");
 
     expect(result).toEqual({ ...mockUser });
     expect(global.fetch).toHaveBeenCalledWith(
@@ -26,7 +28,9 @@ describe("fetchUser", () => {
   });
 
   it("Should throw an error if id is not provided", async () => {
-    await expect(fetchUser()).rejects.toThrowError("ID is required");
+    await expect(fetchById<User>("users", undefined)).rejects.toThrowError(
+      "ID is required"
+    );
   });
 
   it("Should throw an error if fetch fails (non-ok response)", async () => {
@@ -34,7 +38,7 @@ describe("fetchUser", () => {
       ok: false,
     });
 
-    await expect(fetchUser("2")).rejects.toThrowError(
+    await expect(fetchById<User>("users", "2")).rejects.toThrowError(
       "Failed to fetch user with ID:2"
     );
     expect(global.fetch).toHaveBeenCalledWith(

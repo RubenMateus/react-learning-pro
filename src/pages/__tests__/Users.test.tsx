@@ -27,6 +27,9 @@ describe("Users", () => {
   ];
 
   beforeEach(() => {
+    vi.mocked(useDeleteUser).mockReturnValue({
+      mutate: vi.fn(),
+    });
     vi.clearAllMocks();
   });
 
@@ -35,10 +38,6 @@ describe("Users", () => {
       users: undefined,
       isLoading: true,
       error: null,
-    });
-
-    vi.mocked(useDeleteUser).mockReturnValue({
-      mutate: vi.fn(),
     });
 
     render(<Users />);
@@ -52,10 +51,6 @@ describe("Users", () => {
       error: new Error("fail"),
     });
 
-    vi.mocked(useDeleteUser).mockReturnValue({
-      mutate: vi.fn(),
-    });
-
     render(<Users />);
     expect(screen.getByText(/error/i)).toBeInTheDocument();
   });
@@ -65,10 +60,6 @@ describe("Users", () => {
       users: mockUsers,
       isLoading: false,
       error: null,
-    });
-
-    vi.mocked(useDeleteUser).mockReturnValue({
-      mutate: vi.fn(),
     });
 
     render(
@@ -86,6 +77,7 @@ describe("Users", () => {
 
   it("calls deleteUser when Delete button is clicked", () => {
     const deleteUser = vi.fn();
+
     vi.mocked(useUsers).mockReturnValue({
       users: mockUsers,
       isLoading: false,
@@ -112,10 +104,6 @@ describe("Users", () => {
       users: mockUsers,
       isLoading: false,
       error: null,
-    });
-
-    vi.mocked(useDeleteUser).mockReturnValue({
-      mutate: vi.fn(),
     });
 
     render(

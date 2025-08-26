@@ -4,7 +4,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 export const useDeleteUser = () => {
   const queryClient = useQueryClient();
 
-  return useMutation<void, Error, number>({
+  const { mutate } = useMutation<void, Error, number>({
     mutationFn: async (id) => {
       const response = await fetch(
         `https://jsonplaceholder.typicode.com/users/${id}`,
@@ -26,4 +26,8 @@ export const useDeleteUser = () => {
       });
     },
   });
+
+  return {
+    mutate,
+  };
 };

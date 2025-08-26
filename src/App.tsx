@@ -10,6 +10,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { CreateUser } from "./pages/CreateUser";
 import { ThemeProvider } from "./contexts/ThemeProvider";
 import { Todos } from "./pages/Todos";
+import { Dropdowns } from "./pages/Dropdowns";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ export const App = () => {
               <Route path=":id" element={<UserPage />} />
             </Route>
             <Route path="/todos" element={<Todos />} />
+            <Route path="/dropdowns-malucas" element={<Dropdowns />} />
             <Route path="*" element={<div>Not Found</div>} />
           </Routes>
         </BrowserRouter>
