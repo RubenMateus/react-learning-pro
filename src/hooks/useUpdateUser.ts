@@ -14,7 +14,7 @@ export function useUpdateUser() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(updatedUser),
-        }
+        },
       );
 
       if (!response.ok) {
@@ -26,10 +26,10 @@ export function useUpdateUser() {
 
     onSuccess: (updatedUser) => {
       queryClient.setQueryData<User[]>(["users"], (oldUsers) => {
-        if (!oldUsers) return [];
+        if (!oldUsers) return [updatedUser];
 
         return oldUsers.map((user) =>
-          user.id === updatedUser.id ? updatedUser : user
+          user.id === updatedUser.id ? updatedUser : user,
         );
       });
     },
